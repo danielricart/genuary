@@ -1,9 +1,20 @@
 #pragma once
+#include "ofxGui.h"
 
 #include "ofMain.h"
 
 class ofApp : public ofBaseApp{
-
+//private
+    ofParameter<float> value;
+    ofxPanel gui;
+    
+    int colorRed = 0;
+    int colorGreen = 0;
+    int colorBlue = 0;
+    
+    int triangleSize = 1;
+    float valueSet = 0.0f;
+        
 	public:
 		void setup();
 		void update();
