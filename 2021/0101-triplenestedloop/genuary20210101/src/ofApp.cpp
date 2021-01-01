@@ -31,7 +31,7 @@ void ofApp::draw(){
             
             ofDrawTriangle(p1, p2, p3);
             
-            for (int f3 = 0; f3 < triangleSize; f3+=1) {  // control dot generation.
+            for (int f3 = 0; f3 < triangleSize; f3+=3) {  // control dot generation.
                 ofSetColor(0,0,255);
                 ofDrawCircle(f1+f3, f2+f3, 1);
             }
