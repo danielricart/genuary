@@ -18,7 +18,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackground(colorRed, colorGreen, colorBlue);
+    ofBackground(colorRed, 0, 0);
 
     for (int f1 = 0; f1 < ofGetWidth(); f1+=triangleSize) { // control amount of triangles LtoR
         for (int f2 = 0; f2 < ofGetHeight(); f2+=triangleSize) { // control amount of lines of triangles
