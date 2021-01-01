@@ -11,11 +11,9 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
-    triangleSize = ofClamp(50*value.get(),1, 50*1.0f);
     valueSet = value.get();
+    triangleSize = ofClamp(50*valueSet,1, 50*1.0f);
     colorRed = 255*valueSet;
-
 }
 
 //--------------------------------------------------------------
@@ -24,15 +22,18 @@ void ofApp::draw(){
 
     for (int f1 = 0; f1 < ofGetWidth(); f1+=triangleSize) { // control amount of triangles LtoR
         for (int f2 = 0; f2 < ofGetHeight(); f2+=triangleSize) { // control amount of lines of triangles
-            for (int f3 = 0; f3 < 255; f3+=10) {  // will control some color component probably.
-                
-                ofSetColor(colorRed, 255*1-valueSet, f3);
-                
-                glm::vec2 p1, p2, p3;
-                p1 = glm::vec2(f1, f2);
-                p2 = glm::vec2(f1, f2+triangleSize);
-                p3 = glm::vec2(f1+triangleSize, f2+triangleSize);
-                ofDrawTriangle(p1, p2, p3);
+            ofSetColor(colorRed, 255*1-valueSet, ofRandom(255));
+
+            glm::vec2 p1, p2, p3;
+            p1 = glm::vec2(f1, f2);
+            p2 = glm::vec2(f1, f2+triangleSize);
+            p3 = glm::vec2(f1+triangleSize, f2+triangleSize);
+            
+            ofDrawTriangle(p1, p2, p3);
+            
+            for (int f3 = 0; f3 < triangleSize; f3+=1) {  // control dot generation.
+                ofSetColor(0,0,255);
+                ofDrawCircle(f1+f3, f2+f3, 1);
             }
         }
     }
