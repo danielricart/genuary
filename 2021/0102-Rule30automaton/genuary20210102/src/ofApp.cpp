@@ -104,8 +104,8 @@ void ofApp::update(){
         ofExit();
         return ;
     }
-
-    currentGen = evalCellularAutomaton(pattern, currentGen);
+    if (currentGenerationCount > 0) // prevents storing an already modified first generation. 
+        currentGen = evalCellularAutomaton(pattern, currentGen);
     currentGenerationCount++;
     
     if (data.size() == storedGenerations)
