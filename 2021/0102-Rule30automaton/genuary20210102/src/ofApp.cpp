@@ -3,6 +3,9 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ofSetBackgroundAuto(false);
+    ofSetFrameRate(8);
+    ofSetBackgroundColor(0,0,0);
     std::printf("pattern: ");
     printVector(pattern);
     std::printf("Number of generations: %d\n", maxGenerations);
@@ -30,15 +33,19 @@ vector<int> ofApp::evalCellularAutomaton(vector<int> pattern, vector<int> curren
     for (int i = 0; i<currentState.size(); i++) {
         // fetch the 'cell'
         int left, center, right;
-        if (i == 0)
+        if (i == 0) {
             left = 0; // edges (left is out of bounds) are constant at 0
+            left = currentState.at(currentState.back());
+        }
         else
             left = currentState.at(i-1);
         
         center = currentState.at(i);
         
-        if (i == (currentState.size()-1))
+        if (i == (currentState.size()-1)) {
             right = 0;  // edges (right is out of bounds) are constant at 0
+            right = currentState.front();
+        }
         else
             right = currentState.at(i+1);
         
@@ -100,11 +107,11 @@ vector<int> ofApp::evalCellularAutomaton(vector<int> pattern, vector<int> curren
 //--------------------------------------------------------------
 void ofApp::update(){
     if (currentGenerationCount >= maxGenerations) {
-        std::printf("computation ended. Computed %d generations\n", currentGenerationCount);
-        ofExit();
+//        std::printf("computation ended. Computed %d generations\n", currentGenerationCount);
+//        ofExit();
         return ;
     }
-    if (currentGenerationCount > 0) // prevents storing an already modified first generation. 
+    if (currentGenerationCount > 0) // prevents storing an already modified first generation.
         currentGen = evalCellularAutomaton(pattern, currentGen);
     currentGenerationCount++;
     
@@ -122,7 +129,20 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+    int boxWidth = ofGetWidth() / data.front().size();
+    int boxHeight = ofGetHeight() / data.front().size();
+    
+    for (int r = 0; r < data.size(); r++) {
+        for (int c = 0; c < data.at(r).size(); c++) {
+            ofColor boxColor;
+            if (data.at(r).at(c) == 0)
+                boxColor.set(0);
+            else
+                boxColor.set(128);
+            ofSetColor(boxColor);
+            ofDrawRectangle(c*boxWidth, r*boxHeight, boxWidth, boxHeight);
+        }
+    }
 }
 
 //--------------------------------------------------------------

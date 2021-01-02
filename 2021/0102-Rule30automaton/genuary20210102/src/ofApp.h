@@ -10,11 +10,12 @@ class ofApp : public ofBaseApp{
 
     
     vector<int> pattern = {0,0,0,1,1,1,1,0};  // Rule 30
-    int maxGenerations = 16;
-    int storedGenerations = 8;
+    int maxGenerations = 60*10;
+    int storedGenerations = 24;
     int currentGenerationCount = 0;
-    std::vector<int> currentGen = { 0, 0, 0, 0, 1, 0, 0, 0};
+    std::vector<int> currentGen = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     std::vector<std::vector<int>> data = vector<std::vector<int>>();
+    
     
 	public:
 		void setup();
