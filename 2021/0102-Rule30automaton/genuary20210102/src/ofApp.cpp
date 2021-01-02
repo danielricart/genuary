@@ -102,6 +102,7 @@ void ofApp::update(){
     if (currentGenerationCount >= maxGenerations) {
         std::printf("computation ended. Computed %d generations\n", currentGenerationCount);
         ofExit();
+        return ;
     }
 
     currentGen = evalCellularAutomaton(pattern, currentGen);
