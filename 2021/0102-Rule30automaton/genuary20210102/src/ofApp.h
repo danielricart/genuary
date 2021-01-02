@@ -3,7 +3,25 @@
 #include "ofMain.h"
 
 class ofApp : public ofBaseApp{
+    void printVectorVector(std::vector<std::vector<int>> vec);
+    void printVector(std::vector<int> vec);
 
+    vector<int> evalCellularAutomaton(vector<int> pattern, vector<int> currentState);
+
+    
+    vector<int> pattern = {0,0,0,1,1,1,1,0};  // Rule 30
+
+    std::vector<std::vector<int>> data = {
+        { 0, 0, 0, 0, 1, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0},
+    };
+
+    
+    
 	public:
 		void setup();
 		void update();
