@@ -160,6 +160,10 @@ void ofApp::draw(){
                 boxColor.set(0);
             else
                 boxColor.set(128);
+            
+            if (msgRow > 0 && msgRow < message.size())
+                boxColor.set(255,176,0);
+            
             ofSetColor(boxColor);
             ofDrawRectangle(c*boxWidth, r*boxHeight, boxWidth, boxHeight);
         }
