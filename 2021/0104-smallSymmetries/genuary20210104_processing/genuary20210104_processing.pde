@@ -1,14 +1,19 @@
+int posY;
+int sqW;
+int sqH;
+
 void setup() {
-  size(640,480);
+  size(1280,720);
+  posY = height/2;
+  sqW = width/2;
+  sqH = height/2;
+
 }
 
-int posY = height/2;
-int sqW = width/2;
-int sqH = height/2;
 
 void draw() {
 myrect(0,posY, sqW, sqH);
-if (frameCount % 5) {
+if (frameCount % 2 ==0) {
   posY--;
   sqW--;
   sqH--;
