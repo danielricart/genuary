@@ -2,8 +2,17 @@ void setup() {
   size(640,480);
 }
 
+int posY = height/2;
+int sqW = width/2;
+int sqH = height/2;
+
 void draw() {
-myrect(0,height/2, width/2, height/2);
+myrect(0,posY, sqW, sqH);
+if (frameCount % 5) {
+  posY--;
+  sqW--;
+  sqH--;
+}
 }
 
 void myrect(int startx, int starty, int sizex, int sizey) {
