@@ -1,22 +1,22 @@
-int posY;
-int sqW;
-int sqH;
+int pY;
+int sW;
+int sH;
 
 void setup() {
   size(1280,720);
-  posY = height/2;
-  sqW = width/2;
-  sqH = height/2;
+  pY = height/2;
+  sW = width/2;
+  sH = height/2;
 
 }
 
 
 void draw() {
-myrect(0,posY, sqW, sqH);
+myrect(0,pY, sW, sH);
 if (frameCount % 2 ==0) {
-  posY--;
-  sqW--;
-  sqH--;
+  pY--;
+  sW--;
+  sH--;
 }
 }
 
