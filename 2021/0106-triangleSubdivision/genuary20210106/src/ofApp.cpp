@@ -9,9 +9,6 @@ void ofApp::setup(){
     triangleA = {v1, v2, v3};
     visibleTriangles.push_back(triangleA);
     
-    triangleB = {ofVec2f(0,0), v1, v2};
-    
-    
     ofSetBackgroundAuto(true);
     ofSetFrameRate(4);
 }
@@ -19,7 +16,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     vector<ofVec2f> newtriangleA;
-    
+
     newtriangleA = {
         triangleA.at(0).getMiddle(triangleA.at(1)),
         triangleA.at(0).getMiddle(triangleA.at(2)),
