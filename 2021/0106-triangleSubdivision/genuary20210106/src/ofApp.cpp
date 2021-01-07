@@ -2,17 +2,59 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
+    v1 = ofVec2f(ofGetWidth()/2, 0); //Top center
+    v2 = ofVec2f(0, ofGetHeight());  // bottom left
+    v3 = ofVec2f(ofGetWidth(), ofGetHeight());  // bottom right
+    
+    triangleA = {v1, v2, v3};
+    visibleTriangles.push_back(triangleA);
+    
+    triangleB = {ofVec2f(0,0), v1, v2};
+    
+    
+    ofSetBackgroundAuto(true);
+    ofSetFrameRate(4);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    vector<ofVec2f> newtriangleA;
+    
+    newtriangleA = {
+        triangleA.at(0).getMiddle(triangleA.at(1)),
+        triangleA.at(0).getMiddle(triangleA.at(2)),
+        triangleA.at(1).getMiddle(triangleA.at(2))
+    };
+    triangleA = newtriangleA;
+        
+    visibleTriangles.push_back(newtriangleA);
+    
+    std::printf("%d \n", ofGetFrameNum());
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    for (std::vector<vector<ofVec2f>>::iterator it = visibleTriangles.begin() ; it != visibleTriangles.end(); ++it) {
+//        this->triangleColor.invert();
 
+        int r, g, b;
+        r = triangleColor.r;
+        g = triangleColor.g;
+        b = triangleColor.b;
+        
+        r+=20;
+        g-=20;
+        b+=10;
+        
+        triangleColor.r = r % 256;
+        triangleColor.g = g % 256;
+        triangleColor.b = b % 256;
+        
+        ofSetColor(triangleColor);
+
+        ofDrawTriangle((*it).at(0), (*it).at(1), (*it).at(2));
+        
+    };
 }
 
 //--------------------------------------------------------------

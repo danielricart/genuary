@@ -3,7 +3,17 @@
 #include "ofMain.h"
 
 class ofApp : public ofBaseApp{
+    ofVec2f v1, v2, v3, v4;
+    
+    vector<ofVec2f> triangleA;
+    vector<ofVec2f> triangleB;
+    vector<ofVec2f> triangleC;
 
+
+    ofColor triangleColor = ofColor(0,255,255);
+    
+    vector<vector<ofVec2f>> visibleTriangles;
+    
 	public:
 		void setup();
 		void update();
