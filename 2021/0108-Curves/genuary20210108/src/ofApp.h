@@ -5,11 +5,16 @@
 class ofApp : public ofBaseApp{
     vector<glm::vec2> v, v2, v3;
     double fv=777, fv2=132, fv3=0;
+    void dancingShapes();
+    
+    ofPolyline linev1;
+
 
 	public:
 		void setup();
 		void update();
-		void draw();
+    
+        void draw();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
